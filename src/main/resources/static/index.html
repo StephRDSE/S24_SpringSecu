@@ -15,6 +15,8 @@
 	<script type="text/javascript">
 		$.get("/user", function(data) {
 			$("#user").html(data.name);
+			$("#role").html(data.roles);
+			$("#authent").html(data.Authentifié);
 			$(".unauthenticated").hide();
 			$(".authenticated").show();
 		});
@@ -26,8 +28,7 @@
 			})
 			return true;
 		};
-		$
-				.ajaxSetup({
+		$.ajaxSetup({
 					beforeSend : function(xhr, settings) {
 						if (settings.type == 'POST' || settings.type == 'PUT'
 								|| settings.type == 'DELETE'
@@ -50,7 +51,11 @@
 	</div>
 
 	<div class="container authenticated" style="display: none">
-		Logged in as: <span id="user"></span><br>
+		Logged in as: <span id="user"></span>
+		<br>
+		Role : <span id="role"></span>
+		<br>
+		Autentifié : <span id="authent"></span>
 		<button name="disconnect" onclick="logout()">Deconnecter</button>
 
 
